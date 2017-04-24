@@ -379,9 +379,8 @@ open class CircularSlider: UIView {
     }
     
     fileprivate func updateValueLabel() {
-        let timeString = String(format: "%02d:%02d", Int(value)/60, Int(value)%60)
+        let timeString = String(format: "%02d", Int(value)%60)
         textfield.text = timeString
-//        textfield.attributedText = value.formatWithFractionDigits(fractionDigits, customDecimalSeparator: customDecimalSeparator).sliderAttributeString(intFont: intFont, decimalFont: decimalFont, customDecimalSeparator: customDecimalSeparator )
     }
     
     
