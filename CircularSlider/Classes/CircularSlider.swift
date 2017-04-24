@@ -379,7 +379,9 @@ open class CircularSlider: UIView {
     }
     
     fileprivate func updateValueLabel() {
-        textfield.attributedText = value.formatWithFractionDigits(fractionDigits, customDecimalSeparator: customDecimalSeparator).sliderAttributeString(intFont: intFont, decimalFont: decimalFont, customDecimalSeparator: customDecimalSeparator )
+        let timeString = String(format: "%02d:%02d", Int(value)/60, Int(value)%60)
+        textfield.text = timeString
+//        textfield.attributedText = value.formatWithFractionDigits(fractionDigits, customDecimalSeparator: customDecimalSeparator).sliderAttributeString(intFont: intFont, decimalFont: decimalFont, customDecimalSeparator: customDecimalSeparator )
     }
     
     
@@ -436,6 +438,10 @@ open class CircularSlider: UIView {
 
 // MARK: - UITextFieldDelegate
 extension CircularSlider: UITextFieldDelegate {
+    
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return false
+    }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         delegate?.circularSlider?(self, didBeginEditing: textfield)
